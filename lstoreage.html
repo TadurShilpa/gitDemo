@@ -18,8 +18,9 @@
 
     <input class="btn" type="submit" value="Submit">
   </form>
+  <ul id='listofitems'></ul>
   <script>
-    let arr=[];
+
     function saveData(event) {
       event.preventDefault();
 
@@ -30,13 +31,18 @@
         name: name,
         email: email
       }
-      arr.push(obj);
-      localStorage.setItem("arr", JSON.stringify(arr));
-      let store_deserial = JSON.parse(localStorage.getItem("arr"));
-      console.log(store_deserial);
-
-
+    
+      localStorage.setItem(email,JSON.stringify(obj));
+      showonScreen(obj);
     }
+      function showonScreen(obj){
+        const parentEle=document.getElementById('listofitems');
+        parentEle.innerHTML=parentEle.innerHTML + `<li>${obj.name} - ${obj.email}</li>`;
+      }
+      
+
+
+    
   </script>
 </body>
 

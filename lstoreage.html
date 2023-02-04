@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <body>
-    <header>
-      <h1>Store data in Local Storage</h1>
-    </header>
 
-    
-      <form onSubmit="saveData(event)">
-        
-        
-          <label>Name:</label>
-          <input type="text" id="name" name="tname">
-       
-          <label for="email">Email:</label>
-          <input type="text" id="email" name-="ename">
-        
-        <input class="btn" type="submit" value="Submit">
-      </form>
-    <script >
-        function saveData(event){
-            event.preventDefault();
-            
-            const name=document.getElementById("name").value;
-            const email=document.getElementById("email").value
+<body>
+  <header>
+    <h1>Store data in Local Storage</h1>
+  </header>
 
-            localStorage.setItem('name',name);
-            localStorage.setItem('email',email);''
-        }
-    </script>
-  </body>
+
+  <form onSubmit="saveData(event)">
+
+
+    <label>Name:</label>
+    <input type="text" id="name" name="tname">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name-="ename">
+
+    <input class="btn" type="submit" value="Submit">
+  </form>
+  <script>
+    let arr=[];
+    function saveData(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value
+
+      const obj = {
+        name: name,
+        email: email
+      }
+      arr.push(obj);
+      localStorage.setItem("arr", JSON.stringify(arr));
+      let store_deserial = JSON.parse(localStorage.getItem("arr"));
+      console.log(store_deserial);
+
+
+    }
+  </script>
+</body>
+
 </html>
